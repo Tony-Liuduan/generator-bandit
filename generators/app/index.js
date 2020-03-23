@@ -2,7 +2,7 @@ const Generator = require('yeoman-generator');
 require('colors'); // https://www.npmjs.com/package/colors
 
 
-console.log('hello bandit'.yellow); // outputs green text
+console.log('hello bandit'.green); // outputs green text
 
 
 module.exports = class extends Generator {
