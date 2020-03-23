@@ -16,6 +16,9 @@ yo bandit
 npm unlink
 ```
 
+---
+
+
 ## 创建本地命令
 > 当我们的cli并没有发布到npm时，可以借助npm link选择本地安装，这样就可以在本地执行cli命令了
 
