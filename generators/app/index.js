@@ -27,7 +27,12 @@ module.exports = class extends Generator {
                 name: 'framework',
                 message: 'choose a framework',
                 choices: ['React', 'Vue', 'Angular'],
-                default: 'React'
+                default: 'React',
+                when: answer => answer.name !== '', // 表示上一条输入的答案符合条件才执行
+                validate: function (input, answer) {    // 校验逻辑
+                    // ...
+                    return true;
+                }
             }
         ];
         this.prompt(prompts)
@@ -38,6 +43,9 @@ module.exports = class extends Generator {
 
                 // 相对于执行了 Promise.resolve(), 可以调用then执行下一个生命周期勾子
                 done();
+
+                // 如果需要在此执行子文件命令，可写如下代码，相当于执行 yo bandit:React, 即跳转执行./generators/React/index.js
+                // this.composeWith('bandit:' + answers.framework)
             })
     }
 
