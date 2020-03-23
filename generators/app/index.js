@@ -1,4 +1,9 @@
 const Generator = require('yeoman-generator');
+require('colors'); // https://www.npmjs.com/package/colors
+
+
+console.log('hello bandit'.yellow); // outputs green text
+
 
 module.exports = class extends Generator {
     // The name `constructor` is important here

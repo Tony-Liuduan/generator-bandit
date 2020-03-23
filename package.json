@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "inquirer": "^7.1.0",
     "yargs-parser": "^18.1.1",
     "yeoman-generator": "^4.7.2"
