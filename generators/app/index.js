@@ -50,10 +50,14 @@ module.exports = class extends Generator {
     }
 
     writing() {
-        // copyTpl方法在this.fs下且默认使用ejs语法
+        // copyTpl方法在this.fs下且默认使用ejs语法,
         this.fs.copyTpl(
-            this.templatePath(),
-            this.destinationPath(this.name)
+            this.templatePath(), // 参数1：模板路径
+            this.destinationPath(this.name), // 参数2：输出文件路径
+            {   // 参数3：模板变量
+                name: this.name,
+                framework: this.framework,
+            }
         );
     }
 };
