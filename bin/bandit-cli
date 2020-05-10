@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+const figlet = require('figlet');
+const Printer = require('@darkobits/lolcatjs');
+const shell = require('shelljs');
+const { program } = require('commander');
+const chalk = require('chalk');
+const inquirer = require('inquirer');
+
+const _version = require('../package.json').version;
+
+
+
+// const input = 'The quick brown fox\njumps over the\nlazy dog.';
+// const transformed = Printer.default.fromString(input);
+// console.log(transformed);
+
+// figlet('Hello World!!', function (err, data) {
+//     if (err) {
+//         console.log('Something went wrong...');
+//         console.dir(err);
+//         return;
+//     }
+//     console.log(data)
+// });
+
+const bindHandle = {
+    init(options) {
+        console.log('init', options);
+    },
+};
+
+
+program.option('-i, init', 'init project')
+program
+    .usage('[cmd] <options>')
+    .arguments('<cmd> [env]')
+    .action(function (cmd, options) {
+        const handle = bindHandle[cmd];
+        if (typeof handle === 'undefined') {
+            console.log(chalk.blue(`${cmd} `) + chalk.red('没有找到这个命令'));
+        } else {
+            handle(options)
+        }
+    });
+
+program.parse(process.argv);
